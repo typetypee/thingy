@@ -1,11 +1,11 @@
-var red = 'rgb(255, 0, 0)';
+//vars {
+            var red = 'rgb(255, 0, 0)';
             var blue = 'rgb(0, 21, 255)';
             var green =  "rgb(0, 161, 11)";
             var lightblue =  "rgb(0, 204, 255)";
             var brown = "rgb(189, 105, 2)";
     var canvas  = document.getElementById("canvas");
     var ctx = canvas.getContext("2d");
-    // here are the functions{
     var rect = function(x,y,w,h){
         ctx.beginPath();
         ctx.rect(x,y,w,h);
@@ -29,10 +29,11 @@ var red = 'rgb(255, 0, 0)';
         ctx.fill();
         };
     var text = function(txt,x,y){
+        for (var txtLoop = 0;txtLoop < txt.length;txtLoop++){
             ctx.beginPath();
-            
-            ctx.fillText(txt,x,y);
+            ctx.fillText(txt[txtLoop],x,y+30*txtLoop+40);
             ctx.fill();
+        }
         };
     var textAlign = function(align){
             ctx.textAlign = align;
@@ -61,7 +62,7 @@ var red = 'rgb(255, 0, 0)';
         ctx.stroke();
         ctx.fill();
         };
-    var hex = function(x1,y1,x2,y2,x3,y3,x4,y4,x5,y5,x6,y6,x7,y7,x8,y8,x9,y9,x10,y10,x11,y11,x12,y12,x13,y13){
+    var hex = function(x1,y1,x2,y2,x3,y3,x4,y4,x5,y5,x6,y6){
             ctx.beginPath();
         ctx.moveTo(x1,y1);
         ctx.lineTo(x2,y2);
@@ -69,13 +70,6 @@ var red = 'rgb(255, 0, 0)';
         ctx.lineTo(x4,y4);
         ctx.lineTo(x5,y5);
         ctx.lineTo(x6,y6);
-        ctx.lineTo(x7,y7)
-        ctx.lineTo(x8,y8);
-        ctx.lineTo(x9,y9);
-        ctx.lineTo(x10,y10);
-        ctx.lineTo(x11,y11);
-        ctx.lineTo(x12,y12);
-        ctx.lineTo(x13,y13);
         ctx.closePath();
         ctx.stroke();
         ctx.fill();
@@ -119,6 +113,23 @@ var red = 'rgb(255, 0, 0)';
 			ctx.stroke();
 			ctx.fill();
         };
+    var quadCurve = function(x1,y1,x2,y2,x3,y3,x4,y4){
+        
+        ctx.beginPath();
+        ctx.moveTo(x1,y1);
+        ctx.quadraticCurveTo(x2,y2,x3,y3,x4,y4)
+        ctx.closePath();
+        ctx.fill();
+    };
+    var bezier = function(x1,y1,x2,y2,x3,y3,x4,y4,x5,y5,x6,y6,x7,y7,x8,y8){
+        
+        ctx.beginPath();
+        ctx.moveTo(x1,y1);
+        ctx.bezierCurveTo(x2,y2,x3,y3,x4,y4,x5,y5,x6,y6,x7,y7,x8,y8);
+
+        ctx.closePath();
+        ctx.fill();
+    };
     var clear = function(){
             ctx.clearRect(0,0,600,600);
         };
@@ -136,51 +147,26 @@ var red = 'rgb(255, 0, 0)';
         ctx.font = ctx.font.replace(/\d+px/,size+"px");
 
     };
-     var arc = function(x,y,start,stop){
+    var arc = function(x,y,start,stop){
          ctx.beginPath();
         ctx.arc(x, y, start,stop, 2 * Math.PI);
         ctx.stroke();
         ctx.closePath();
     };
-    //}
-        //showcode {
-        var showCode = function(){
-        clear();
-        background("yellow");
-        fill(green);
-        strokeWeight(2);
-        triangle(450,0,10,100,250,200);
-        fill(red);
-        textAlign("center");
-        textSize("50");
-        text("Smart Script",250,250);
-        fill("black");
-        circle(250,310,50,50);
-        fill(brown);
-        stroke("white");
-        rect(120,280,50,50);
-        rect(320,280,50,50);
-        fill("red");
-        stroke("rgba(255,255,255,0.0)");
-        roundRect(410,50,100,50,3);
-        roundRect(385,99,150,40,5);
-        fill("black");
-        circle(410,159,20,20);
-        circle(510,159,20,20);
-        stroke("black");
-        line(500,49,500,9);
-        hex(60,50, 100,50, 134,90, 100,140, 50,140, 20,90 );
-        quad(160,150, 200,150, 240,190, 120,190);
-        //}
-        };
-        showCode();
-        //quad(60,50, 100,50, 140,90, 20,90);
+    var allowAnimation = function(theVariable){
+        window.requestAnimationFrame(theVariable);
+    };
+    var floor = function(num1){
+        Math.floor(num1);
+    };
+    var ceil = function(num1){
+        Math.ceil(num1);
+    };
+    var create = function(tagName){
+        document.createElement(tagName);
+    };
+    var append = function(variable){
+        document.body.appendChild(variable);
+    };
+    // } //they have all functions, and color vars.
         
-// Here is a hexagon !hex(60,50, 100,50, 140,90, 100,140, 50,140, 20,90 );
-fill("blue");
-var d3x = 50;
-    quad(d3x+10,d3x+10,d3x+50,d3x+50,d3x+150,d3x+15,d3x+60,d3x+90);
-    fill("red");
-    triangle(d3x+150,d3x+150,d3x+60,d3x+90,d3x+150,d3x+16)
-    fill("green");
-    quad(d3x+60,d3x+90,d3x+60,d3x+150,d3x+150,d3x+150);
