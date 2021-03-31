@@ -162,11 +162,7 @@
     var ceil = function(num1){
         Math.ceil(num1);
     };
-    var create = function(tagName){
-        document.createElement(tagName);
-    };
-    var append = function(variable){
-        document.body.appendChild(variable);
+    var round = function(num){
+      Math.round(num);
     };
     // } //they have all functions, and color vars.
-        
